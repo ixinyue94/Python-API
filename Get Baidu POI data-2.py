@@ -10,10 +10,10 @@ next(f)
 bounds = []
 for line in f:
     line2 = line.split(',')
-    latl = line2[-4] #latl左下角经度
-    lngl = line2[-3] #lngl左下角纬度
-    latr = line2[-2] #latr右上角经度
-    lngr = line2[-1] #lngr右上角纬度
+    latl = line2[-4] #latl左下角纬度
+    lngl = line2[-3] #lngl左下角经度
+    latr = line2[-2] #latr右上角纬度
+    lngr = line2[-1] #lngr右上角经度
     bounds.append(latl + ',' + lngl + ',' + latr + ',' + lngr)
 
 baidu = 'http://api.map.baidu.com/place/v2/search'
@@ -40,11 +40,14 @@ def bound_search(b):
                     lats.append(lat)
                     lngs.append(lng)
         else:
-            print(poi['bounds'])
+            print(poi['bounds']) #该格网内的数据超过400，需要继续细分
 
 for r in bounds:
     time.sleep(1)  #解决一分钟并发量限制
-    bound_search(r)
+    try:
+        bound_search(r)
+    except:
+        print('NULL')
 
 #保存结果
 all = {'名称':names, '纬度':lats, '经度':lngs}
