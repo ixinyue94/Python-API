@@ -12,24 +12,19 @@
 </head>
 <body>
     <p>
-        城市名称:<input type="text" value="南京" id="cityName"/>
+        城市:<input type="text" value="北京" id="cityName"/>
     </p>
     <p>
-        公交名称:<input type="text" value="11路" id="busId"/>
+        线路:<input type="text" value="331路" id="busId"/>
         <input type="button" value="查询" onclick="busSearch();"/>
-        (多条线路查询用英文逗号分割)
+        (多线路用英文逗号分割)
     </p>
         <div>
         <table id="data">
             <thead>
-                <tr style="text-align:center;width:100%;">
-                    <td colspan="7" style="front-size:larger;">
-                        线路信息
-                    </td>
-                </tr>
                 <tr style="text-align:left;width:100%">
                     <td colspan="7" style="font-size:larger;">
-                        名称，开始时间，结束时间，公交公司，站台数，轨迹点
+                        线路，开始时间，结束时间，运营企业，站台数，坐标
                     </td>
                 </tr>
             </thead>
@@ -50,7 +45,6 @@
         },
 	    onGetBusLineComplete: function(busline){
 	        if (busline) {
-	            //线路信息
                   var startTime = busline.startTime;
                   var endTime = busline.endTime;
                   var company = busline.company;
@@ -58,7 +52,6 @@
                   var name = busline.name;
                   var data = name + ';' + startTime + ';' + endTime + ';' + company + ';' + numBusStations;
                   dataHtml += data;
-                  //公交轨迹点信息
                   var points = busline.getPath();
                   var path = "";
                   var linedata = "";
@@ -86,7 +79,7 @@
             }
         }
         else{
-            alert('请输入查询公交名称')
+            alert('请输入公交/地铁线路名称')
         }
     }
 </script>
