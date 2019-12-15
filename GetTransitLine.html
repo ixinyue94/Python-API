@@ -24,7 +24,7 @@
             <thead>
                 <tr style="text-align:left;width:100%">
                     <td colspan="7" style="font-size:larger;">
-                        线路，开始时间，结束时间，运营企业，站台数，坐标
+                        线路，开始时间，结束时间，站台数，运营企业，坐标
                     </td>
                 </tr>
             </thead>
@@ -50,7 +50,7 @@
                   var company = busline.company;
                   var numBusStations = busline.getNumBusStations();
                   var name = busline.name;
-                  var data = name + ';' + startTime + ';' + endTime + ';' + company + ';' + numBusStations;
+                  var data = name + ';' + startTime + ';' + endTime + ';' + numBusStations + ';' + company;
                   dataHtml += data;
                   var points = busline.getPath();
                   var path = "";
