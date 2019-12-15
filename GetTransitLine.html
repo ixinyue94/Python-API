@@ -22,6 +22,11 @@
         <div>
         <table id="data">
             <thead>
+                <tr style="text-align:center;width:100%;">
+                    <td colspan="7" style="front-size:larger;">
+                        线路信息
+                    </td>
+                </tr>
                 <tr style="text-align:left;width:100%">
                     <td colspan="7" style="font-size:larger;">
                         名称，开始时间，结束时间，公交公司，站台数，轨迹点
@@ -45,23 +50,23 @@
         },
 	    onGetBusLineComplete: function(busline){
 	        if (busline) {
-	          //线路信息
-              var startTime = busline.startTime;
-              var endTime = busline.endTime;
-              var company = busline.company;
-              var numBusStations = busline.getNumBusStations();
-              var name = busline.name;
-              var data = name + ';' + startTime + ';' + endTime + ';' + company + ';' + numBusStations;
-              dataHtml += data;
-	          //公交轨迹点信息
-              var points = busline.getPath();
-              var path = "";
-              var linedata = "";
-              for (var i = 0; i<points.length; i++){
-                path += points[i].lng;
-                path += ",";
-                path += points[i].lat;
-                path += ";";
+	            //线路信息
+                  var startTime = busline.startTime;
+                  var endTime = busline.endTime;
+                  var company = busline.company;
+                  var numBusStations = busline.getNumBusStations();
+                  var name = busline.name;
+                  var data = name + ';' + startTime + ';' + endTime + ';' + company + ';' + numBusStations;
+                  dataHtml += data;
+                  //公交轨迹点信息
+                  var points = busline.getPath();
+                  var path = "";
+                  var linedata = "";
+                  for (var i = 0; i<points.length; i++){
+                    path += points[i].lng;
+                    path += ",";
+                    path += points[i].lat;
+                    path += ";";
               }
               dataHtml = dataHtml + ';' +  path + "<br>";
               document.getElementById("tabledata").innerHTML = dataHtml;
