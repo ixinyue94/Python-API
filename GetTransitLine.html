@@ -7,18 +7,16 @@
 		#l-map{height:300px;width:100%;}
 		#r-result {width:100%;}
 	</style>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZNzgKvvZvOmvvBSnER2yEi7W1CHs9WQm"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=riNT8MEfpNLjxYtFK8Us73io2lVdhQil"></script>
 	<title>公交/地铁线路查询</title>
 </head>
 <body>
-    <p>
-        城市:<input type="text" value="北京" id="cityName"/>
-    </p>
     <p>
         线路:<input type="text" value="331路" id="busId"/>
         <input type="button" value="查询" onclick="busSearch();"/>
         (多线路用英文逗号分割)
     </p>
+    <h1 id="city">南京</h1>
         <div>
         <table id="data">
             <thead>
@@ -36,7 +34,7 @@
 <script type="text/javascript">
   	var busline
     var dataHtml = ''
-	busline = new BMap.BusLineSearch(document.getElementById("cityName").value, {
+	busline = new BMap.BusLineSearch(document.getElementById("city").innerHTML, {
 	    onGetBusListComplete: function(result){
 	        if (result) {
               var fstLine = result.getBusListItem(0);
